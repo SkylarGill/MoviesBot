@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using BotFrameworkTest1.MovieDB.Endpoint;
 using Microsoft.AspNetCore.Http;
+using MoviesBot.MovieDB.Endpoint;
 using NUnit.Framework;
 
-namespace BotFrameworkTest1.Tests.MovieDB.Endpoint
+namespace MoviesBot.Tests.MovieDB.Endpoint
 {
     [TestFixture]
     public class MovieDbEndpointTests

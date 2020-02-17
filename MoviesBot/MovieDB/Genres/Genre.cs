@@ -1,4 +1,4 @@
-﻿namespace BotFrameworkTest1.MovieDB.Genres
+﻿namespace MoviesBot.MovieDB.Genres
 {
     public class Genre
     {

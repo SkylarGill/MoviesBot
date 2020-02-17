@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using BotFrameworkTest1.MovieDB.Endpoint;
+using MoviesBot.MovieDB.Endpoint;
 using Newtonsoft.Json;
 
-namespace BotFrameworkTest1.MovieDB.Genres
+namespace MoviesBot.MovieDB.Genres
 {
     public class GenresClient : IGenresClient
     {

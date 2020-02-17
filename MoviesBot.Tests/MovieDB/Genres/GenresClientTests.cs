@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using BotFrameworkTest1.MovieDB.Endpoint;
-using BotFrameworkTest1.MovieDB.Genres;
-using BotFrameworkTest1.Tests.TestUtilities;
 using Moq;
+using MoviesBot.MovieDB.Endpoint;
+using MoviesBot.MovieDB.Genres;
+using MoviesBot.Tests.TestUtilities;
 using NUnit.Framework;
 
-namespace BotFrameworkTest1.Tests.MovieDB.Genres
+namespace MoviesBot.Tests.MovieDB.Genres
 {
     [TestFixture]
     public class GenresClientTests

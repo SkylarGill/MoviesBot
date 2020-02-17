@@ -18,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BotFrameworkTest1\BotFrameworkTest1.csproj" />
+      <ProjectReference Include="..\MoviesBot\MoviesBot.csproj" />
     </ItemGroup>
 
 </Project>

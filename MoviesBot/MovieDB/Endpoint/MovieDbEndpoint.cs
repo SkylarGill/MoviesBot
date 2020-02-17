@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 
-namespace BotFrameworkTest1.MovieDB.Endpoint
+namespace MoviesBot.MovieDB.Endpoint
 {
     public class MovieDbEndpoint : IMovieDbEndpoint
     {

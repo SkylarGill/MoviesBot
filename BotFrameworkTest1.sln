@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotFrameworkTest1", "BotFrameworkTest1\BotFrameworkTest1.csproj", "{4932AC53-B5B8-4D3C-A3F8-963345633E62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesBot", "MoviesBot\MoviesBot.csproj", "{4932AC53-B5B8-4D3C-A3F8-963345633E62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotFrameworkTest1.Tests", "BotFrameworkTest1.Tests\BotFrameworkTest1.Tests.csproj", "{07ECE05E-BCDC-4236-AF6A-4EE57593B899}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesBot.Tests", "MoviesBot.Tests\MoviesBot.Tests.csproj", "{07ECE05E-BCDC-4236-AF6A-4EE57593B899}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

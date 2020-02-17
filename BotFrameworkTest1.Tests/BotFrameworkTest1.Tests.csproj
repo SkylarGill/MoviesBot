@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="MovieDB" />
+      <ProjectReference Include="..\BotFrameworkTest1\BotFrameworkTest1.csproj" />
     </ItemGroup>
 
 </Project>

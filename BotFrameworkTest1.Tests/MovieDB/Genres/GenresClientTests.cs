@@ -14,6 +14,8 @@ namespace BotFrameworkTest1.Tests.MovieDB.Genres
     [TestFixture]
     public class GenresClientTests
     {
+        private readonly Func<Genre, Genre, bool> _genreComparison = (genreA, genreB) => genreA.Id == genreB.Id && genreA.Name == genreB.Name;
+        
         [Test]
         public async Task GetGenresAsync_WithSuccessfulResponse_ReturnsGenreList()
         {
@@ -35,7 +37,7 @@ namespace BotFrameworkTest1.Tests.MovieDB.Genres
             var actualGenres = await genresClient.GetGenresAsync()
                 .ConfigureAwait(false);
             
-            Assert.That(actualGenres, Is.EquivalentTo(genresResponse.Genres));
+            Assert.That(actualGenres, Is.EquivalentTo(genresResponse.Genres).Using<Genre>(_genreComparison));
         }
 
         private IMovieDbEndpoint GetMockGenresEndpoint()
@@ -43,7 +45,7 @@ namespace BotFrameworkTest1.Tests.MovieDB.Genres
             var mockEndpoint = new Mock<IMovieDbEndpoint>();
             mockEndpoint
                 .Setup(endpoint => endpoint.ConstructUri(null))
-                .Returns(new Uri("example.com/genresendpoint"));
+                .Returns(new Uri("http://www.example.com/genresendpoint"));
 
             return mockEndpoint.Object;
         }
@@ -52,12 +54,10 @@ namespace BotFrameworkTest1.Tests.MovieDB.Genres
         {
             var testHttpMessageHandler = new TestHttpMessageHandler(HttpStatusCode.OK, response);
             var httpClient = new HttpClient(testHttpMessageHandler);
-            // var mockHttpClientFactory = new Mock<IHttpClientFactory>();
-            // mockHttpClientFactory
-            //     .Setup(factory => factory.CreateClient())
-            //     .Returns(httpClient);
-            
-            var mockHttpClientFactory = testHttpMessageHandler.CreateClientFactory()
+            var mockHttpClientFactory = new Mock<IHttpClientFactory>();
+            mockHttpClientFactory
+                .Setup(factory => factory.CreateClient(It.IsAny<string>()))
+                .Returns(httpClient);
 
             return mockHttpClientFactory.Object;
         }

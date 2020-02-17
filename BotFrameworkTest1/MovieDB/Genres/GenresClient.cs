@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using BotFrameworkTest1.MovieDB.Endpoint;
 using Newtonsoft.Json;
 
-namespace BotFrameworkTest1.MovieDB.Genre
+namespace BotFrameworkTest1.MovieDB.Genres
 {
     public class GenresClient : IGenresClient
     {

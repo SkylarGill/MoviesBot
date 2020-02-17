@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BotFrameworkTest1.MovieDB.Genre
+namespace BotFrameworkTest1.MovieDB.Genres
 {
     public class GenresResponse
     {

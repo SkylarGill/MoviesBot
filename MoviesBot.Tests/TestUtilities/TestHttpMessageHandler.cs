@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace BotFrameworkTest1.Tests.TestUtilities
+namespace MoviesBot.Tests.TestUtilities
 {
     public class TestHttpMessageHandler : HttpMessageHandler
     {

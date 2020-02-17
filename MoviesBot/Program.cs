@@ -6,7 +6,7 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace BotFrameworkTest1
+namespace MoviesBot
 {
     public class Program
     {

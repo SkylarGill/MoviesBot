@@ -8,7 +8,7 @@ using Microsoft.Bot.Builder.TraceExtensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace BotFrameworkTest1
+namespace MoviesBot
 {
     public class AdapterWithErrorHandler : BotFrameworkHttpAdapter
     {

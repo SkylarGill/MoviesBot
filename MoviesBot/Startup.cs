@@ -10,10 +10,9 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MoviesBot.Bots;
 
-using BotFrameworkTest1.Bots;
-
-namespace BotFrameworkTest1
+namespace MoviesBot
 {
     public class Startup
     {

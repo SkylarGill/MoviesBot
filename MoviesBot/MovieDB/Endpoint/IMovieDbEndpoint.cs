@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BotFrameworkTest1.MovieDB.Endpoint
+namespace MoviesBot.MovieDB.Endpoint
 {
     public interface IMovieDbEndpoint
     {

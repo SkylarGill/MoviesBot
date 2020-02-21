@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MoviesBot.MovieDB.Genres
+namespace MoviesBot.MovieDB.Genres.Response
 {
     public class GenresResponse
     {

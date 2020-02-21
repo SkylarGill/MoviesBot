@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Moq;
 using MoviesBot.MovieDB.Endpoint;
 using MoviesBot.MovieDB.Genres;
+using MoviesBot.MovieDB.Genres.Response;
 using MoviesBot.Tests.TestUtilities;
 using NUnit.Framework;
 
@@ -29,7 +28,7 @@ namespace MoviesBot.Tests.MovieDB.Genres
                 }
             };
             
-            var mockHttpClientFactory = GetMockHttpClientFactory(genresResponse);
+            var mockHttpClientFactory = HttpClientFactoryTestHelper.GetMockHttpClientFactory(genresResponse);
             var mockGenresEndpoint = GetMockGenresEndpoint();
 
             var genresClient = new GenresClient(mockGenresEndpoint, mockHttpClientFactory);
@@ -48,18 +47,6 @@ namespace MoviesBot.Tests.MovieDB.Genres
                 .Returns(new Uri("http://www.example.com/genresendpoint"));
 
             return mockEndpoint.Object;
-        }
-
-        private static IHttpClientFactory GetMockHttpClientFactory(object response)
-        {
-            var testHttpMessageHandler = new TestHttpMessageHandler(HttpStatusCode.OK, response);
-            var httpClient = new HttpClient(testHttpMessageHandler);
-            var mockHttpClientFactory = new Mock<IHttpClientFactory>();
-            mockHttpClientFactory
-                .Setup(factory => factory.CreateClient(It.IsAny<string>()))
-                .Returns(httpClient);
-
-            return mockHttpClientFactory.Object;
         }
     }
 }   

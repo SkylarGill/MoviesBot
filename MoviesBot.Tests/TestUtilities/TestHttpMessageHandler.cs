@@ -10,7 +10,6 @@ namespace MoviesBot.Tests.TestUtilities
     {
         private readonly HttpResponseMessage _message;
         
-        
         public TestHttpMessageHandler(HttpStatusCode statusCode, object responseObject)
         {
             var contentString = JsonConvert.SerializeObject(responseObject);

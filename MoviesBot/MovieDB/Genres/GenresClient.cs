@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using MoviesBot.MovieDB.Endpoint;
+using MoviesBot.MovieDB.Genres.Response;
 using Newtonsoft.Json;
 
 namespace MoviesBot.MovieDB.Genres

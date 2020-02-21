@@ -46,8 +46,5 @@ namespace MoviesBot.MovieDB.Movies.Response
         
         [JsonProperty("vote_average")]
         public decimal VoteAverage { get; set; }
-        
-        
-        
     }
 }

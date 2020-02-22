@@ -4,7 +4,7 @@ using MoviesBot.LanguageUnderstanding.Model;
 
 namespace MoviesBot.LanguageUnderstanding.ResponseStrategy
 {
-    public class ResponseStrategySelector
+    public class ResponseStrategySelector : IResponseStrategySelector
     {
         private readonly IEnumerable<IResponseStrategy> _responseStrategies;
 

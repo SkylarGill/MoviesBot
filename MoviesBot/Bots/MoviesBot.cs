@@ -11,22 +11,28 @@ using Microsoft.Bot.Schema;
 
 namespace MoviesBot.Bots
 {
-    public class EchoBot : ActivityHandler
+    public class MoviesBot : ActivityHandler
     {
+        private readonly IMessageHandler _messageHandler;
+
+        public MoviesBot(IMessageHandler messageHandler)
+        {
+            _messageHandler = messageHandler;
+        }
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
-            var replyText = $"Echo: {turnContext.Activity.Text}";
+            var replyText = _messageHandler.GetMessageResponse(turnContext, cancellationToken);
             await turnContext.SendActivitiesAsync(
                 new IActivity[]
                 {
                     new Activity(ActivityTypes.Typing),
-                    MessageFactory.Text(replyText, replyText),
+                    MessageFactory.Text(await replyText.ConfigureAwait(false), await replyText.ConfigureAwait(false)),
                 }, cancellationToken);
         }
 
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
-            var welcomeText = "Hello and welcome!";
+            const string welcomeText = "Hello, ask me about movies.";
             foreach (var member in membersAdded)
             {
                 if (member.Id != turnContext.Activity.Recipient.Id)

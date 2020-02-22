@@ -20,7 +20,6 @@ namespace MoviesBot.Bots
                 new IActivity[]
                 {
                     new Activity(ActivityTypes.Typing),
-                    new Activity(type: "delay", value: 1000), 
                     MessageFactory.Text(replyText, replyText),
                 }, cancellationToken);
         }

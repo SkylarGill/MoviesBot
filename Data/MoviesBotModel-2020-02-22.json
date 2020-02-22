@@ -1,0 +1,206 @@
+{
+  "luis_schema_version": "4.0.0",
+  "versionId": "0.1",
+  "name": "Movies-Queries",
+  "desc": "",
+  "culture": "en-us",
+  "tokenizerVersion": "1.0.0",
+  "intents": [
+    {
+      "name": "GetMovies"
+    },
+    {
+      "name": "None"
+    }
+  ],
+  "entities": [
+    {
+      "name": "genre",
+      "roles": []
+    }
+  ],
+  "composites": [],
+  "closedLists": [],
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "prebuiltEntities": [
+    {
+      "name": "datetimeV2",
+      "roles": []
+    }
+  ],
+  "model_features": [],
+  "regex_features": [],
+  "patterns": [],
+  "utterances": [
+    {
+      "text": "1999 scifi films",
+      "intent": "GetMovies",
+      "entities": [
+        {
+          "entity": "genre",
+          "startPos": 5,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "best horror movies",
+      "intent": "GetMovies",
+      "entities": [
+        {
+          "entity": "genre",
+          "startPos": 5,
+          "endPos": 10
+        }
+      ]
+    },
+    {
+      "text": "fantasy movies 1987",
+      "intent": "GetMovies",
+      "entities": [
+        {
+          "entity": "genre",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "fantasy movies 2012",
+      "intent": "GetMovies",
+      "entities": [
+        {
+          "entity": "genre",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "films 1999",
+      "intent": "GetMovies",
+      "entities": []
+    },
+    {
+      "text": "films from 2019",
+      "intent": "GetMovies",
+      "entities": []
+    },
+    {
+      "text": "films horror",
+      "intent": "GetMovies",
+      "entities": [
+        {
+          "entity": "genre",
+          "startPos": 6,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "films in comedy genre",
+      "intent": "GetMovies",
+      "entities": [
+        {
+          "entity": "genre",
+          "startPos": 9,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "find action movies from 2018",
+      "intent": "GetMovies",
+      "entities": [
+        {
+          "entity": "genre",
+          "startPos": 5,
+          "endPos": 10
+        }
+      ]
+    },
+    {
+      "text": "find comedy films from 2012",
+      "intent": "GetMovies",
+      "entities": [
+        {
+          "entity": "genre",
+          "startPos": 5,
+          "endPos": 10
+        }
+      ]
+    },
+    {
+      "text": "find me comedy films from 2014",
+      "intent": "GetMovies",
+      "entities": [
+        {
+          "entity": "genre",
+          "startPos": 8,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "get action movies from 1986",
+      "intent": "GetMovies",
+      "entities": [
+        {
+          "entity": "genre",
+          "startPos": 4,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "get films from 1992",
+      "intent": "GetMovies",
+      "entities": []
+    },
+    {
+      "text": "get horror films from 1994",
+      "intent": "GetMovies",
+      "entities": [
+        {
+          "entity": "genre",
+          "startPos": 4,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "get me movies from 2010",
+      "intent": "GetMovies",
+      "entities": []
+    },
+    {
+      "text": "movies 1999",
+      "intent": "GetMovies",
+      "entities": []
+    },
+    {
+      "text": "movies horror 1994",
+      "intent": "GetMovies",
+      "entities": [
+        {
+          "entity": "genre",
+          "startPos": 7,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "what romance films were released in 1999",
+      "intent": "GetMovies",
+      "entities": [
+        {
+          "entity": "genre",
+          "startPos": 5,
+          "endPos": 11
+        }
+      ]
+    }
+  ],
+  "settings": []
+}

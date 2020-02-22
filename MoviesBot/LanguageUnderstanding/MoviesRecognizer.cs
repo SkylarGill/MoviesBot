@@ -2,6 +2,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.AI.Luis;
+using Microsoft.Extensions.Configuration;
+using LuisRecognizer = Microsoft.Bot.Builder.AI.Luis.LuisRecognizer;
+using LuisRecognizerOptions = Microsoft.Bot.Builder.AI.Luis.LuisRecognizerOptions;
 
 namespace MoviesBot.LanguageUnderstanding
 {
@@ -9,11 +12,15 @@ namespace MoviesBot.LanguageUnderstanding
     {
         private readonly ITelemetryRecognizer _luisRecognizer;
 
-        public MoviesRecognizer(ITelemetryRecognizer luisRecognizer)
+        public MoviesRecognizer(IConfiguration configuration)
         {
-            _luisRecognizer = luisRecognizer;
+            var luisApplication = new LuisApplication(configuration["LuisAppId"],
+                configuration["LuisAPIKey"],
+                "https://" + configuration["LuisAPIHostName"]);
+            
+            _luisRecognizer = new LuisRecognizer(luisApplication);
         }
-        
+
         public async Task<RecognizerResult> RecognizeAsync(ITurnContext turnContext, CancellationToken cancellationToken) =>
             await _luisRecognizer
                 .RecognizeAsync(turnContext, cancellationToken)

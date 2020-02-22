@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using MoviesBot.LanguageUnderstanding.Model;
 
 namespace MoviesBot.LanguageUnderstanding.ResponseStrategy
@@ -6,6 +7,6 @@ namespace MoviesBot.LanguageUnderstanding.ResponseStrategy
     {
         MoviesBotIntent.Intent Intent { get; }
 
-        string GetResponseMessage(MoviesBotIntent moviesBotIntent);
+        Task<string> GetResponseMessageAsync(MoviesBotIntent moviesBotIntent);
     }
 }

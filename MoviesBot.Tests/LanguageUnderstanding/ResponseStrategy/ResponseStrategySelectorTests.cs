@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using Microsoft.Bot.Builder;
+using Moq;
 using MoviesBot.LanguageUnderstanding.Model;
 using MoviesBot.LanguageUnderstanding.ResponseStrategy;
 using MoviesBot.LanguageUnderstanding.ResponseStrategy.Strategies;
+using MoviesBot.MovieDB.Genres;
+using MoviesBot.MovieDB.Movies;
 using NUnit.Framework;
 
 namespace MoviesBot.Tests.LanguageUnderstanding.ResponseStrategy
@@ -38,7 +41,7 @@ namespace MoviesBot.Tests.LanguageUnderstanding.ResponseStrategy
             var strategies = new List<IResponseStrategy>()
             {
                 new DefaultResponseStrategy(),
-                new GetMoviesResponseStrategy()
+                new GetMoviesResponseStrategy(Mock.Of<IMoviesClient>(), Mock.Of<IGenresClient>())
             };
             
             var moviesBotIntent = new MoviesBotIntent()
@@ -67,7 +70,7 @@ namespace MoviesBot.Tests.LanguageUnderstanding.ResponseStrategy
             var strategies = new List<IResponseStrategy>()
             {
                 new DefaultResponseStrategy(),
-                new GetMoviesResponseStrategy()
+                new GetMoviesResponseStrategy(Mock.Of<IMoviesClient>(), Mock.Of<IGenresClient>())
             };
             
             var moviesBotIntent = new MoviesBotIntent()

@@ -47,6 +47,8 @@ namespace MoviesBot
             services.AddSingleton<IMoviesClient, MoviesClient>(GetMoviesClient);
             services.AddSingleton<IGenresClient, GenresClient>(GetGenresClient);
 
+            services.AddHttpClient();
+
             // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
             services.AddTransient<IBot, Bots.MoviesBot>();
         }

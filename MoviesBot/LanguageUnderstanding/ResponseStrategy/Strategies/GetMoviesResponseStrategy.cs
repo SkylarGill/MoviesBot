@@ -28,11 +28,11 @@ namespace MoviesBot.LanguageUnderstanding.ResponseStrategy.Strategies
         {
             var genre = await GetGenre(moviesBotIntent).ConfigureAwait(false);
             var year = GetYear(moviesBotIntent);
-            var movies = await _moviesClient.GetMoviesAsync(new MoviesRequest(genre.Id.ToString(), year)).ConfigureAwait(false);
-            return GetFormattedMessage(genre, year, movies);
+            var movies = await _moviesClient.GetMoviesAsync(new MoviesRequest(genre?.Id.ToString(), year)).ConfigureAwait(false);
+            return await GetFormattedMessage(genre, year, movies).ConfigureAwait(false);
         }
 
-        private string GetFormattedMessage(Genre genre, string year, IEnumerable<Movie> movies)
+        private async Task<string> GetFormattedMessage(Genre genre, string year, IEnumerable<Movie> movies)
         {
             var stringBuilder = new StringBuilder("Here are movies");
             
@@ -50,7 +50,13 @@ namespace MoviesBot.LanguageUnderstanding.ResponseStrategy.Strategies
 
             foreach (var movie in movies)
             {
-                var movieGenres = movie.GenreIds.Select(GetGenreNameFromId).ToList();
+                var movieGenres = new List<string>();
+                foreach (var genreId in movie.GenreIds)
+                {
+                    var genreName = await GetGenreNameFromId(genreId).ConfigureAwait(false);
+                    movieGenres.Add(genreName);
+                }
+
                 var genresString = string.Join(", ", movieGenres);
                 
                 stringBuilder.Append($"{movie.Title}");
@@ -65,7 +71,7 @@ namespace MoviesBot.LanguageUnderstanding.ResponseStrategy.Strategies
         private static string GetYear(MoviesBotIntent moviesBotIntent)
         {
             var regex = new Regex("[0-9]{4}");
-            var yearValue = GetYearFromIntent(moviesBotIntent);
+            var yearValue = GetYearFromIntent(moviesBotIntent) ?? string.Empty;
             var matches = regex.Matches(yearValue);
             return matches.FirstOrDefault()?.Value;
         }
@@ -94,9 +100,9 @@ namespace MoviesBot.LanguageUnderstanding.ResponseStrategy.Strategies
             moviesBotIntent.Entities.genre.FirstOrDefault();
         
         private static string GetYearFromIntent(MoviesBotIntent moviesBotIntent) => 
-            moviesBotIntent.Entities.genre.FirstOrDefault();
+            moviesBotIntent.Entities.datetime?.FirstOrDefault()?.ToString();
 
         private static bool GenreIsPopulated(MoviesBotIntent moviesBotIntent) => 
-            !string.IsNullOrEmpty(moviesBotIntent.Entities.genre.FirstOrDefault());
+            !string.IsNullOrEmpty(moviesBotIntent.Entities.genre?.FirstOrDefault());
     }
 }

@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace MoviesBot.MovieDB.Movies
 {
-    public class MoviesClient
+    public class MoviesClient : IMoviesClient
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IMovieDbEndpoint _moviesEndpoint;

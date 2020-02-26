@@ -1,4 +1,4 @@
-# Bot Framework MovieDb example
+# Bot Framework Movie DB example
 
 This is an example of a chatbot utilising the [Microsoft Bot Framework](https://dev.botframework.com/ "Microsoft Bot Framework").
 

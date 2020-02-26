@@ -12,10 +12,7 @@ namespace MoviesBot.Controllers
     [ApiController]
     public class WebChatController : Controller
     {
-        private const string PageContentResourceName = "MoviesBot.Content.Chat.html";
         private const string StylesheetResourceName = "MoviesBot.Content.Chat.css";
-        
-        private readonly string _pageContent;
 
         private readonly string _botName;
         private readonly string _webChatSecret;
@@ -23,24 +20,12 @@ namespace MoviesBot.Controllers
 
         public WebChatController(IConfiguration configuration)
         {
-            _pageContent = GetFileContentFromResource(PageContentResourceName);
             _stylesheetContent = GetFileContentFromResource(StylesheetResourceName);
 
             _botName = configuration["BotName"];
             _webChatSecret = configuration["WebChatSecret"];
         }
 
-        [Route("/webchat")]
-        [HttpGet]
-        public ContentResult GetPage()
-        {
-            return new ContentResult()
-            {
-                Content = _pageContent,
-                ContentType = "text/html",
-            };
-        }
-        
         [Route("/webchat/stylesheet")]
         [HttpGet]
         public ContentResult GetStylesheet()

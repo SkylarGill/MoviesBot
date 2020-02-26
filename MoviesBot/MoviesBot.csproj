@@ -16,7 +16,6 @@
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Content\Chat.html" />
     <EmbeddedResource Include="Content\Chat.css" />
   </ItemGroup>
 

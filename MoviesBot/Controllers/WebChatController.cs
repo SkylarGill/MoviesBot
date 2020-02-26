@@ -41,7 +41,7 @@ namespace MoviesBot.Controllers
         public async Task GetChatFrame()
         {
             var token = await GetChatToken().ConfigureAwait(false);
-            var redirectUrl = $"https://webchat.botframework.com/embed//{_botName}?t={token}";
+            var redirectUrl = $"https://webchat.botframework.com/embed/{_botName}?t={token}";
             Response.Redirect(redirectUrl);
         }
 
@@ -61,7 +61,7 @@ namespace MoviesBot.Controllers
 
         private static string RemoveQuotesFromTokenResponse(string responseContent)
         {
-            return responseContent.Substring(1, responseContent.Length - 2);
+            return responseContent.Trim('"');
         }
         
         private static string GetFileContentFromResource(string htmlResourceName)

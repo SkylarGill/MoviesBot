@@ -12,7 +12,7 @@ namespace MoviesBot.MovieDB.Genres
         private readonly IMovieDbEndpoint _genresEndpoint;
         private readonly IHttpClientFactory _httpClientFactory;
         
-        private IEnumerable<Genre> _genres;
+        private IEnumerable<Genre> _cachedGenres;
 
         public GenresClient(IMovieDbEndpoint genresEndpoint, IHttpClientFactory httpClientFactory)
         {
@@ -22,13 +22,13 @@ namespace MoviesBot.MovieDB.Genres
         
         public async Task<IEnumerable<Genre>> GetGenresAsync()
         {
-            if (_genres == null)
+            if (_cachedGenres == null)
             {
                 var genresResponse = await GetGenresResponse();
-                _genres = genresResponse.Genres;
+                _cachedGenres = genresResponse.Genres;
             }
 
-            return _genres;
+            return _cachedGenres;
         }
 
         private async Task<GenresResponse> GetGenresResponse()

@@ -17,6 +17,7 @@ namespace MoviesBot.LanguageUnderstanding.ResponseStrategy.Strategies
     {
         private readonly IMoviesClient _moviesClient;
         private readonly IGenresClient _genresClient;
+        
         public MoviesBotIntent.Intent Intent => MoviesBotIntent.Intent.GetMovies;
 
         public GetMoviesResponseStrategy(IMoviesClient moviesClient, IGenresClient genresClient)
@@ -24,6 +25,7 @@ namespace MoviesBot.LanguageUnderstanding.ResponseStrategy.Strategies
             _moviesClient = moviesClient;
             _genresClient = genresClient;
         }
+        
         public async Task<string> GetResponseMessageAsync(MoviesBotIntent moviesBotIntent)
         {
             var genre = await GetGenre(moviesBotIntent).ConfigureAwait(false);
@@ -50,12 +52,7 @@ namespace MoviesBot.LanguageUnderstanding.ResponseStrategy.Strategies
 
             foreach (var movie in movies)
             {
-                var movieGenres = new List<string>();
-                foreach (var genreId in movie.GenreIds)
-                {
-                    var genreName = await GetGenreNameFromId(genreId).ConfigureAwait(false);
-                    movieGenres.Add(genreName);
-                }
+                var movieGenres = await GetMovieGenres(movie).ConfigureAwait(false);
 
                 var genresString = string.Join(", ", movieGenres);
                 
@@ -68,11 +65,23 @@ namespace MoviesBot.LanguageUnderstanding.ResponseStrategy.Strategies
             return stringBuilder.ToString();
         }
 
+        private async Task<List<string>> GetMovieGenres(Movie movie)
+        {
+            var movieGenres = new List<string>();
+            foreach (var genreId in movie.GenreIds)
+            {
+                var genreName = await GetGenreNameFromId(genreId).ConfigureAwait(false);
+                movieGenres.Add(genreName);
+            }
+
+            return movieGenres;
+        }
+
         private static string GetYear(MoviesBotIntent moviesBotIntent)
         {
-            var regex = new Regex("[0-9]{4}");
+            var yearRegex = new Regex("[0-9]{4}");
             var yearValue = GetYearFromIntent(moviesBotIntent) ?? string.Empty;
-            var matches = regex.Matches(yearValue);
+            var matches = yearRegex.Matches(yearValue);
             return matches.FirstOrDefault()?.Value;
         }
 
